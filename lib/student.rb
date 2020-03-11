@@ -7,7 +7,7 @@ class Student
       FROM students WHERE grade = 9
     SQL
     
-    DB[:conn].execute(sql).collect |row|
+    DB[:conn].execute(sql).collect do |row|
       self.new_from_db(row)
     end
   end
@@ -18,7 +18,7 @@ class Student
       FROM students WHERE grade < 12
     SQL
     
-    DB[:conn].execute(sql).collect |row|
+    DB[:conn].execute(sql).collect do |row|
       self.new_from_db(row)
     end
   end
@@ -71,7 +71,7 @@ class Student
       FROM students
     SQL
  
-    DB[:conn].execute(sql).each |row|
+    DB[:conn].execute(sql).each do |row|
       self.new_from_db(row)
     end
     # retrieve all the rows from the "Students" database
